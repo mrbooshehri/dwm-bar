@@ -7,8 +7,8 @@
 # Dependencies: alsa-utils
 
 dwm_alsa () {
-	STATUS=$(amixer sget Master | tail -n1 | sed -r "s/.*\[(.*)\]/\1/")
-    VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
+	STATUS=$(amixer -c 1 sget Master | tail -n1 | sed -r "s/.*\[(.*)\]/\1/")
+    VOL=$(amixer -c 1 get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
     	if [ "$STATUS" = "off" ]; then
